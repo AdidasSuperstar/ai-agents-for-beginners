@@ -183,13 +183,13 @@ The iterative retrieval example also now uses `search_knowledge_base`:
 checker_agent = client.as_agent(
     tools=[search_knowledge_base],
     name="AzureSearchRAGCheckerAgent",
-    instructions="""You are a meticulous assistant who double-checks answers against retrieved sources.
-When answering questions:
-1. Search for relevant documents first
-2. Search again with specific names, topics, or phrases from the first results
-3. Compare the retrieved snippets
-4. Present a final answer grounded in the index
-5. If any detail seems incomplete, say what is missing.""",
+    instructions="""You are a meticulous screenplay knowledge-base assistant who verifies answers against retrieved document snippets.
+When answering questions about characters, scenes, dialogue, or events:
+1. Search the Azure AI Search index for the main names, titles, or phrases in the question
+2. Search again using specific character names, scene details, or quoted phrases found in the first results
+3. Compare the retrieved snippets for consistent evidence about actions, relationships, and context
+4. Ground the final answer in the retrieved snippets and mention the source document or blob URL when available
+5. If the index does not contain enough evidence, clearly say what is missing instead of guessing.""",
 )
 ```
 
